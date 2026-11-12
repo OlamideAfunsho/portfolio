@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="flex flex-1 flex-col justify-center py-16 text-[#0F172A]"
+      className="flex min-h-[calc(100svh-4.5rem)] flex-col justify-center py-16 text-[#0F172A] sm:min-h-[calc(100svh-6.25rem)]"
     >
       <p className="text-[#52525B] motion-safe:animate-fade-up">Hey there,</p>
 

@@ -19,7 +19,7 @@ const tooltipClass =
 
 const Navbar = () => {
   return (
-    <header className="flex items-center justify-between gap-3 sm:gap-4">
+    <header className="flex h-12 items-center justify-between gap-3 sm:h-16 sm:gap-4">
       <Link
         href="/"
         aria-label="Olamide Afunsho, home"
