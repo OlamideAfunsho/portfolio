@@ -24,7 +24,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${marcellus.className} ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#FAFAFA]">{children}</body>
+      <body className="min-h-full flex flex-col bg-[#FAFAFA] text-[#121212]">{children}</body>
     </html>
   );
 }

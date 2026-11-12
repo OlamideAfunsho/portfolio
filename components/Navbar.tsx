@@ -5,6 +5,7 @@ import { momoSignature } from '@/app/font';
 import { HomeIcon, SendIcon, FileIcon, MailIcon } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'motion/react';
 
 const Navbar = () => {
 
@@ -54,14 +55,14 @@ const Navbar = () => {
 
   return (
     <>
-    <div className='flex items-center justify-between px-6 py-3 text-[#121212]'>
+    <div className='flex items-center justify-between'>
         <h1 className={`${momoSignature.className}  `}>Prodigy</h1>
 
-        <div className='flex gap-2 p-1 sm:px-2 sm:py-2 bg-white/10 backdrop-blur-md rounded-md border border-[#E2E8F0]'>
+        <div className='flex gap-2 px-2 py-2 bg-white/10 backdrop-blur-md rounded-full border border-[#E2E8F0]'>
             {navLinks.map((link, i) => (
-                <Link key={i} href={link.href} className=' hover:bg-[#F8FAFC] p-1 sm:p-3 rounded-sm'>
-                    <link.icon className='w-4 h-4 sm:w-auto sm:h-auto' />
-                </Link>
+            <Link key={i} href={link.href} className='transition-colors duration-500 ease-in-out hover:bg-[#edf2f6] p-1 sm:p-3 rounded-full'>
+                <link.icon className='w-4 h-4 sm:w-auto sm:h-auto' />
+            </Link>
             ))}
         </div>
 
