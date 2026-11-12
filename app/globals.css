@@ -1,1 +1,46 @@
 @import "tailwindcss";
+
+/* Map the next/font variables to Tailwind's font utilities:
+   font-sans → Geist, font-mono → Geist Mono,
+   font-display → Marcellus, font-script → Momo Signature */
+@theme inline {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-display: var(--font-marcellus), ui-serif, Georgia, serif;
+  --font-script: var(--font-momo-signature), cursive;
+}
+
+@theme {
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-breathe: breathe 2s ease-in-out infinite;
+
+  /* Status dot: fades out and comes back to life */
+  @keyframes breathe {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.3;
+      transform: scale(0.8);
+    }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

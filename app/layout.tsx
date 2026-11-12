@@ -1,30 +1,27 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { marcellus } from "./font";
+import { geistSans, geistMono, marcellus, momoSignature } from "./font";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const title = "Olamide Afunsho — Full-Stack Engineer";
+const description =
+  "Full-stack engineer building fast, reliable web products with Next.js and TypeScript.";
 
 export const metadata: Metadata = {
-  title: "Olamide's Portfolio",
-  description: "Legend of awesomeness",
+  title,
+  description,
+  openGraph: { title, description, type: "website" },
+  twitter: { card: "summary", title, description },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${marcellus.className} ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${marcellus.variable} ${momoSignature.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#FAFAFA] text-[#121212]">{children}</body>
+      <body className="min-h-full flex flex-col bg-[#FAFAFA] text-[#121212] font-sans">
+        {children}
+      </body>
     </html>
   );
 }

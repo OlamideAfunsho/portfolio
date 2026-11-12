@@ -1,75 +1,63 @@
-"use client";
+import Link from "next/link";
+import { FileText, FolderGit2, House, Mail, type LucideIcon } from "lucide-react";
+import LagosClock from "./LagosClock";
 
-import React, { useEffect, useState } from 'react'
-import { momoSignature } from '@/app/font';
-import { HomeIcon, SendIcon, FileIcon, MailIcon } from 'lucide-react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { motion } from 'motion/react';
+type NavLink = { label: string; href: string; icon: LucideIcon };
+
+const navLinks: NavLink[] = [
+  { label: "Home", href: "/", icon: House },
+  { label: "Work", href: "#work", icon: FolderGit2 },
+  { label: "Résumé", href: "/olamide-afunsho-cv.pdf", icon: FileText },
+  { label: "Email", href: "mailto:abolamide77@gmail.com", icon: Mail },
+];
+
+const linkClass =
+  "group relative grid size-9 place-items-center rounded-full text-[#3F3F46] transition-colors duration-300 hover:bg-[#EDF2F6] hover:text-[#0F172A] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0F172A] sm:size-11";
+
+const tooltipClass =
+  "pointer-events-none absolute top-full mt-2 translate-y-1 whitespace-nowrap rounded-md bg-[#0F172A] px-2 py-1 font-sans text-xs text-white opacity-0 transition duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100";
 
 const Navbar = () => {
-
-    const [time, setTime] = useState<string>("");
-
-    useEffect(() => {
-        const updateTime = () => {
-            const now = new Date();
-            setTime(
-                now.toLocaleTimeString("en-US", {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit',
-                    hour12: true,
-                })
-            );
-        };
-
-        updateTime();
-        const interval = setInterval(updateTime, 1000);
-
-        return () => clearInterval(interval);
-    }, []);
-
-    // if (!time) {
-    //     return <span className="text-[#71717A] text-sm">--:--:-- --</span>;
-    // }
-
-    const navLinks = [
-        {
-            icon: HomeIcon,
-            href: '/'
-        },
-        {
-            icon: SendIcon,
-            href: '/'
-        },
-        {
-            icon: FileIcon,
-            href: '/'
-        },
-        {
-            icon: MailIcon,
-            href: '/'
-        }
-    ]
-
   return (
-    <>
-    <div className='flex items-center justify-between'>
-        <h1 className={`${momoSignature.className}  `}>Prodigy</h1>
+    <header className="flex items-center justify-between gap-3 sm:gap-4">
+      <Link
+        href="/"
+        aria-label="Olamide Afunsho, home"
+        className="shrink-0 font-script text-lg text-[#0F172A] rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0F172A] sm:text-2xl"
+      >
+        OA
+      </Link>
 
-        <div className='flex gap-2 px-2 py-2 bg-white/10 backdrop-blur-md rounded-full border border-[#E2E8F0]'>
-            {navLinks.map((link, i) => (
-            <Link key={i} href={link.href} className='transition-colors duration-500 ease-in-out hover:bg-[#edf2f6] p-1 sm:p-3 rounded-full'>
-                <link.icon className='w-4 h-4 sm:w-auto sm:h-auto' />
-            </Link>
-            ))}
-        </div>
+      <nav aria-label="Primary">
+        <ul className="flex gap-0.5 rounded-full border border-[#E2E8F0] bg-white/60 p-1 backdrop-blur-md sm:gap-2 sm:p-2">
+          {navLinks.map(({ label, href, icon: Icon }) => {
+            const content = (
+              <>
+                <Icon aria-hidden className="size-4 sm:size-5" strokeWidth={1.75} />
+                <span className={tooltipClass}>{label}</span>
+              </>
+            );
 
-        <span className='font-bold font-mono text-[12px] sm:text-[16px]'>{time}</span>
-    </div>
-    </>
-  )
-}
+            return (
+              <li key={label}>
+                {href.startsWith("/") || href.startsWith("#") ? (
+                  <Link href={href} aria-label={label} className={linkClass}>
+                    {content}
+                  </Link>
+                ) : (
+                  <a href={href} aria-label={label} className={linkClass}>
+                    {content}
+                  </a>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
 
-export default Navbar
+      <LagosClock />
+    </header>
+  );
+};
+
+export default Navbar;
