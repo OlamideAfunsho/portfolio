@@ -4,13 +4,10 @@ export type Project = {
   slug: string;
   name: string;
   role: string;
-  /** One line on what it is and what you did. Outcome first, features second. */
   summary: string;
   stack: string[];
   links: ProjectLink[];
-  /** Screenshot in /public/images/work. Leave out to show the placeholder tile. */
   image?: { src: string; alt: string };
-  /** Projects without a UI get a custom visual instead of a screenshot. */
   visual?: "kv-lite-diagram";
 };
 
@@ -57,6 +54,15 @@ export const projects: Project[] = [
     stack: ["Go", "WAL", "SSTables", "CRC32"],
     links: [{ label: "Code", href: "https://github.com/OlamideAfunsho/kv-lite" }],
     visual: "kv-lite-diagram",
+  },
+  {
+    slug: "ai-proxy-gateway",
+    name: "Secure AI Proxy Gateway",
+    role: "Backend Engineer",
+    summary:
+      "An edge gateway that sits in front of an AI service and rejects excess traffic before it reaches the backend or LLM compute, using a declarative, DB-less Kong setup.",
+    stack: ["Kong", "Docker", "FastAPI", "Python"],
+    links: [{ label: "Code", href: "https://github.com/OlamideAfunsho/kong-ai-proxy" }],
   },
   {
     slug: "context-flow",
