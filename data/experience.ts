@@ -12,7 +12,9 @@ export const experience: Experience[] = [
     company: "Nithub",
     location: "Lagos, Nigeria",
     period: "Nov 2026 – Present",
-    points: [],
+    points: [
+      "Architected and shipped the backend for Nithub Talent Spotlight, a talent showcase and recruiter shortlisting platform within a 3-day sprint alongside a product manager and frontend engineer."
+    ],
   },
   {
     role: "Freelance Full-Stack & AI Developer",

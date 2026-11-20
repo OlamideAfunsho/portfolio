@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/data/projects";
 import KvLiteDiagram from "./KvLiteDiagram";
+import GatewayDiagram from "./GatewayDiagram";
 
 const ProjectVisual = ({ project }: { project: Project }) => {
   if (project.image) {
@@ -17,6 +18,8 @@ const ProjectVisual = ({ project }: { project: Project }) => {
   }
 
   if (project.visual === "kv-lite-diagram") return <KvLiteDiagram />;
+  if (project.visual === "gateway-diagram") return <GatewayDiagram />;
+
 
   // Placeholder until the screenshot is ready. Replace before deploying.
   return (

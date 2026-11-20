@@ -8,7 +8,7 @@ export type Project = {
   stack: string[];
   links: ProjectLink[];
   image?: { src: string; alt: string };
-  visual?: "kv-lite-diagram";
+  visual?: "kv-lite-diagram" | "gateway-diagram";
 };
 
 // Order here = order on the page. Move FocusGrid to the top once students are using it.
@@ -63,6 +63,7 @@ export const projects: Project[] = [
       "An edge gateway that sits in front of an AI service and rejects excess traffic before it reaches the backend or LLM compute, using a declarative, DB-less Kong setup.",
     stack: ["Kong", "Docker", "FastAPI", "Python"],
     links: [{ label: "Code", href: "https://github.com/OlamideAfunsho/kong-ai-proxy" }],
+    visual: "gateway-diagram",
   },
   {
     slug: "context-flow",
